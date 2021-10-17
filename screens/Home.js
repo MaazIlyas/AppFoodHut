@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text,TouchableOpacity, Image, SafeAreaView, StyleSheet, TextInput, FlatList } from "react-native";
 import { COLORS, FONTS, icons, images, SIZES } from "../constants";
-
+import { HorizontalFoodCard } from "../components"
 
 const Home = () => {
 
@@ -134,6 +134,7 @@ const Home = () => {
                         alignItems: "center",
                         justifyContent: "center",
                         marginRight: SIZES.padding,
+                        marginBottom: -20,
                     }}
                     onPress={() => onSelectCategory(item)}
                 >
@@ -186,6 +187,36 @@ const Home = () => {
         )
     }
 
+    function renderFoodCards() {
+
+        const renderItem = ({item, index}) => {
+            return (
+                <TouchableOpacity
+                    style={{
+                        flexDirection: 'row',
+                        borderRadius: SIZES.radius,
+                        backgroundColor: COLORS.lightGray2,
+                        height: 150,
+                        alignItems: 'center',
+                        marginHorizontal: SIZES.padding,
+                        marginBottom: SIZES.radius,
+                        // marginTop: -50,
+                    }}
+                >
+
+            </TouchableOpacity>
+            )
+        }
+        return(
+            <FlatList
+                data = {categories}
+                keyExtractor={(item) => `${item.id}`}
+                showVerticalScrollIndicator={false}
+                renderItem={renderItem}
+                contentContainerStyle={{ paddingVertical: SIZES.padding * 2 }}
+            />
+        )
+    }
 
     return (
 
@@ -196,7 +227,38 @@ const Home = () => {
             {/* Search */}
             {renderSearch()}
 
+            {/* FoodPreferenceMenu */}
             {renderFoodPreference()}
+
+            {/* Food Cards */}
+            {renderFoodCards()}
+
+            {/* <FlatList
+
+                data = {categories}
+                keyExtractor={(item) => `${item.id}`}
+                showVerticalScrollIndicator={false}
+                renderItem={({item, index}) => {
+                    return (
+                        <HorizontalFoodCard
+                            containerStyle={{
+                                height: 130,
+                                alignItems: 'center',
+                                marginHorizontal: SIZES.padding,
+                                marginBottom: SIZES.radius
+                            }}
+                            imageStyle={{
+                                marginTop: 20,
+                                height: 110,
+                                width: 110
+                            }}
+                            item={item}
+                            onPress={() => console.log
+                            ("HorizontalFoodCard")}
+                        />
+                    )
+                }}
+            /> */}
 
         </View>
     )
