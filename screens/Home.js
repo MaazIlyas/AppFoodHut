@@ -35,7 +35,7 @@ const Home = () => {
             icon: icons.allFV,
             description: "Sample FOod Description",
             price: "10.99",
-            calories: "40 calories",
+            calories: "40"
         },
         {
             id: 2,
@@ -43,7 +43,7 @@ const Home = () => {
             icon: icons.nonVeg,
             description: "Sample FOod Description",
             price: "10.99",
-            calories: "40 calories",
+            calories: "43"
         },
         {
             id: 3,
@@ -51,7 +51,7 @@ const Home = () => {
             icon: icons.salad,
             description: "Sample FOod Description",
             price: "10.99",
-            calories: "40 calories",
+            calories: "49"
         },
         {
             id: 4,
@@ -59,7 +59,7 @@ const Home = () => {
             icon: icons.vegan,
             description: "Sample FOod Description",
             price: "10.99",
-            calories: "40 calories",
+            calories: "400",
         }
     ]
 
@@ -258,7 +258,7 @@ const Home = () => {
                         </Text>
 
                         {/* Descriptionc */}
-                        <Text style={{ color: COLORS.darkgray2, ...FONTS.h4}}>
+                        <Text style={{ color: COLORS.darkgray2, ...FONTS.body4}}>
                             {item.description}
                         </Text>
 
@@ -277,8 +277,15 @@ const Home = () => {
                         }}
                     >
                         <Image
-                            source={icons.c}
+                            source={icons.fire}
+                            style={{
+                                width: 30,
+                                height: 30
+                            }}
                         />
+                        <Text style={{ color: COLORS.black}}>
+                            {item.calories} Calories
+                        </Text>
                     </View>
 
                 </TouchableOpacity>
