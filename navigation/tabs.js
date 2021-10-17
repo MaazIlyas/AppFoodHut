@@ -46,7 +46,7 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
                 {/* To float up menu button */}
                 <TouchableOpacity
                     style={{
-                        top: -22.5,
+                        top: -15.5,
                         justifyContent: 'center',
                         alignItems: 'center',
                         width: 50,

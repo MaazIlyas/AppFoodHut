@@ -127,7 +127,7 @@ const Home = () => {
             return (
                 <TouchableOpacity
                     style={{
-                        padding: SIZES.padding,
+                        padding: SIZES.padding +1.5,
                         paddingBottom: SIZES.padding * 2,
                         backgroundColor: (selectedCategory?.id == item.id) ? COLORS.primary : COLORS.white,
                         borderRadius: SIZES.radius,
