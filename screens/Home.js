@@ -63,7 +63,7 @@ const Home = () => {
 
 
     function onSelectCategory(category) {
-        //filter restaurant
+        //filter restaurant //needs to be adjusted
         let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
 
         setRestaurants(restaurantList)
