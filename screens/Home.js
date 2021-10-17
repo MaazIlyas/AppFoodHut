@@ -4,20 +4,33 @@ import { COLORS, icons, SIZES } from "../constants";
 
 
 const Home = () => {
-    return (
-        <View
-        style={{
-            flexDirection: 'row',
-            height: 40,
-            alignItems: 'center',
-            marginHorizontal: SIZES.base,
-            marginVertical: SIZES.base,
-            paddingHorizontal: SIZES.radius,
-            borderRadius: SIZES.radius,
-            backgroundColor: COLORS.lightGray
 
-        }}
-        >
+    function renderSearch() {
+        
+    }
+        
+    return (
+
+        <View style={{
+            flex:1
+        }}>
+            
+            
+            {/* Move it to a function after getting to know the way */}
+            {/* Search */}
+            <View
+            style={{
+                flexDirection: 'row',
+                height: 40,
+                alignItems: 'center',
+                marginHorizontal: SIZES.base,
+                marginVertical: SIZES.base,
+                paddingHorizontal: SIZES.radius,
+                borderRadius: SIZES.radius,
+                backgroundColor: COLORS.lightGray
+
+            }}
+            >
             {/* Icon */}
             <Image
             source={icons.search}
@@ -36,6 +49,21 @@ const Home = () => {
                 placeholder="Search food...."
             />
             {/* Filter Buttons */}
+            <TouchableOpacity
+            //onPress - will work later on
+            >
+                <Image
+                source={icons.hamburger}
+                style={{
+                    height: 20,
+                    width: 20,
+                    tintColor: COLORS.black
+                }}
+                />
+            </TouchableOpacity>
+        </View>
+
+
         </View>
     )
 }
