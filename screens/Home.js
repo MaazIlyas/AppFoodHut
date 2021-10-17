@@ -28,6 +28,40 @@ const Home = () => {
             icon: icons.vegan,
         }
     ]
+    const foodCardData = [
+        {
+            id: 1,
+            name: "All",
+            icon: icons.allFV,
+            description: "Sample FOod Description",
+            price: "10.99",
+            calories: "40 calories",
+        },
+        {
+            id: 2,
+            name: "Non Veg",
+            icon: icons.nonVeg,
+            description: "Sample FOod Description",
+            price: "10.99",
+            calories: "40 calories",
+        },
+        {
+            id: 3,
+            name: "Vegetarian",
+            icon: icons.salad,
+            description: "Sample FOod Description",
+            price: "10.99",
+            calories: "40 calories",
+        },
+        {
+            id: 4,
+            name: "Vegan",
+            icon: icons.vegan,
+            description: "Sample FOod Description",
+            price: "10.99",
+            calories: "40 calories",
+        }
+    ]
 
     // price rating
     const affordable = 1
@@ -57,6 +91,7 @@ const Home = () => {
     ]
 
     const [categories, setCategories] = React.useState(categoryData)
+    const [foodCards, setFoodCards] = React.useState(foodCardData)
     const [selectedCategory, setSelectedCategory] = React.useState(null)
     const [restaurants, setRestaurants] = React.useState(restaurantData)
     // const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
@@ -195,7 +230,7 @@ const Home = () => {
                     style={{
                         flexDirection: 'row',
                         borderRadius: SIZES.radius,
-                        backgroundColor: COLORS.lightGray2,
+                        backgroundColor: COLORS.white,
                         height: 150,
                         alignItems: 'center',
                         marginHorizontal: SIZES.padding,
@@ -203,13 +238,55 @@ const Home = () => {
                         // marginTop: -50,
                     }}
                 >
+                    {/* image */}
+                    <Image
+                        source={item.icon}
+                        style={{
+                            marginTop: 20,
+                            height: 130,
+                            width: 110
+                        }}
+                    />
 
-            </TouchableOpacity>
+                    <View style={{
+                        flex: 1
+                    }}
+                    >
+                        {/* Name */}
+                        <Text style={{ ...FONTS.h3, fontSize: 17}}>
+                            {item.name}
+                        </Text>
+
+                        {/* Descriptionc */}
+                        <Text style={{ color: COLORS.darkgray2, ...FONTS.h4}}>
+                            {item.description}
+                        </Text>
+
+                        {/* Price */}
+                        <Text style={{ marginTop: SIZES.base, ...FONTS.h2}}>
+                            ${item.price}
+                        </Text>
+                    </View>
+
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            position: 'absolute',
+                            top: 5,
+                            right: SIZES.radius
+                        }}
+                    >
+                        <Image
+                            source={icons.c}
+                        />
+                    </View>
+
+                </TouchableOpacity>
             )
         }
         return(
             <FlatList
-                data = {categories}
+                data = {foodCards}
                 keyExtractor={(item) => `${item.id}`}
                 showVerticalScrollIndicator={false}
                 renderItem={renderItem}
