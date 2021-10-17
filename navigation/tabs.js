@@ -5,7 +5,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
-// import Svg, { Path } from 'react-native-svg';
+
 import { isIphoneX } from 'react-native-iphone-x-helper';
 
 import { Home, Reservation, Cart, Menu } from "../screens"
@@ -29,16 +29,7 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
                 <View style={{ flexDirection: 'row', position: 'absolute', top: 0 }}>
                     {/* Create a curvy shape <copied from stackoverflow> */}
                     <View style={{ flex: 1, backgroundColor: COLORS.white }}></View>
-                    {/* <Svg
-                        width={70}
-                        height={61}
-                        viewBox="0 0 75 61"
-                    >
-                        <Path
-                            d="M75.2 0v61H0V0c4.1 0 7.4 3.1 7.9 7.1C10 21.7 22.5 33 37.7 33c15.2 0 27.7-11.3 29.7-25.9.5-4 3.9-7.1 7.9-7.1h-.1z"
-                            fill={COLORS.white}
-                        />
-                    </Svg> */}
+
                     <View style={{ flex: 1, backgroundColor: COLORS.white }}></View>
                 </View>
 
@@ -46,7 +37,7 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
                 {/* To float up menu button */}
                 <TouchableOpacity
                     style={{
-                        top: -22.5,
+                        top: -15.5,
                         justifyContent: 'center',
                         alignItems: 'center',
                         width: 50,
