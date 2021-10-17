@@ -5,19 +5,10 @@ import { COLORS, icons, SIZES } from "../constants";
 
 const Home = () => {
 
-    function renderSearch() {
-        
-    }
-        
-    return (
+    // Writing Dummy Data
 
-        <View style={{
-            flex:1
-        }}>
-            
-            
-            {/* Move it to a function after getting to know the way */}
-            {/* Search */}
+    function renderSearch() {
+        return (
             <View
             style={{
                 flexDirection: 'row',
@@ -63,6 +54,16 @@ const Home = () => {
             </TouchableOpacity>
         </View>
 
+        )
+    }
+        
+    return (
+
+        <View style={{
+            flex:1
+        }}>
+            {/* Search */}
+            {renderSearch()}
 
         </View>
     )
