@@ -25,6 +25,9 @@ export const basket = require("../assets/icons/shopping-basket.png");
 export const star = require("../assets/icons/star.png");
 export const sushi = require("../assets/icons/sushi.png");
 export const user = require("../assets/icons/user.png");
+export const vegan = require("../assets/icons/vegan.png");
+export const nonVeg = require("../assets/icons/non-veg.png");
+export const allFV = require("../assets/icons/all-food-veg.png");
 
 export default {
     back,
@@ -52,4 +55,7 @@ export default {
     star,
     sushi,
     user,
+    vegan,
+    nonVeg,
+    allFV,
 }
