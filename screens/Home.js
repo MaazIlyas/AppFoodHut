@@ -31,27 +31,27 @@ const Home = () => {
     const foodCardData = [
         {
             id: 1,
-            name: "All",
-            icon: icons.allFV,
-            description: "Sample FOod Description",
+            name: "Cheese Burger",
+            icon: images.burger_restaurant_2,
+            description: "Burger with fries",
             price: "10.99",
-            calories: "40"
+            calories: "70"
         },
         {
             id: 2,
-            name: "Non Veg",
-            icon: icons.nonVeg,
-            description: "Sample FOod Description",
+            name: "Chciken Burger",
+            icon: images.crispy_chicken_burger,
+            description: "Crispy Fried chicken burger",
             price: "10.99",
-            calories: "43"
+            calories: "50"
         },
         {
             id: 3,
-            name: "Vegetarian",
-            icon: icons.salad,
-            description: "Sample FOod Description",
+            name: "Sushi",
+            icon: images.sushi,
+            description: "Delicate sushi",
             price: "10.99",
-            calories: "49"
+            calories: "60"
         },
         {
             id: 4,
@@ -143,7 +143,7 @@ const Home = () => {
             //onPress - will work later on
             >
                 <Image
-                source={icons.hamburger}
+                source={icons.filter}
                 style={{
                     height: 20,
                     width: 20,
@@ -242,9 +242,12 @@ const Home = () => {
                     <Image
                         source={item.icon}
                         style={{
-                            marginTop: 20,
-                            height: 130,
-                            width: 110
+                            marginTop: 10,
+                            height: 110,
+                            width: 110,
+                            marginBottom: 10,
+                            marginLeft: 20,
+                            marginRight: 15
                         }}
                     />
 
@@ -253,17 +256,17 @@ const Home = () => {
                     }}
                     >
                         {/* Name */}
-                        <Text style={{ ...FONTS.h3, fontSize: 17}}>
+                        <Text style={{ fontWeight: "bold", fontSize: 17, marginBottom: 10}}>
                             {item.name}
                         </Text>
 
                         {/* Descriptionc */}
-                        <Text style={{ color: COLORS.darkgray2, ...FONTS.body4}}>
+                        <Text style={{ color: COLORS.darkgray2, ...FONTS.body4, marginBottom: 5}}>
                             {item.description}
                         </Text>
 
                         {/* Price */}
-                        <Text style={{ marginTop: SIZES.base, ...FONTS.h2}}>
+                        <Text style={{ marginTop: SIZES.base, fontWeight: "bold", }}>
                             ${item.price}
                         </Text>
                     </View>
@@ -279,11 +282,12 @@ const Home = () => {
                         <Image
                             source={icons.fire}
                             style={{
-                                width: 30,
-                                height: 30
+                                width: 18,
+                                height: 21,
+                                marginTop: 1,
                             }}
                         />
-                        <Text style={{ color: COLORS.black}}>
+                        <Text style={{ color: COLORS.black, marginTop: 5, marginLeft: 3}}>
                             {item.calories} Calories
                         </Text>
                     </View>

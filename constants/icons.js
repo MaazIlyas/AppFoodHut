@@ -28,6 +28,7 @@ export const user = require("../assets/icons/user.png");
 export const vegan = require("../assets/icons/vegan.png");
 export const nonVeg = require("../assets/icons/non-veg.png");
 export const allFV = require("../assets/icons/all-food-veg.png");
+export const filter = require("../assets/icons/filter.png");
 
 export default {
     back,
@@ -58,4 +59,5 @@ export default {
     vegan,
     nonVeg,
     allFV,
+    filter,
 }
