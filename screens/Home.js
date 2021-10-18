@@ -35,6 +35,7 @@ const Home = () => {
             icon: images.burger_restaurant_2,
             description: "Burger with fries",
             price: "10.99",
+            categories: [1, 2, 3],
             calories: "70"
         },
         {
@@ -43,6 +44,7 @@ const Home = () => {
             icon: images.crispy_chicken_burger,
             description: "Crispy Fried chicken burger",
             price: "10.99",
+            categories: [1, 3, 4],
             calories: "50"
         },
         {
@@ -51,6 +53,7 @@ const Home = () => {
             icon: images.sushi,
             description: "Delicate sushi",
             price: "10.99",
+            categories: [1, 4],
             calories: "60"
         },
         {
@@ -59,6 +62,7 @@ const Home = () => {
             icon: icons.vegan,
             description: "Sample FOod Description",
             price: "10.99",
+            categories: [1, 2, 3],
             calories: "400",
         }
     ]
@@ -96,15 +100,17 @@ const Home = () => {
     const [restaurants, setRestaurants] = React.useState(restaurantData)
     // const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 
-
+    //To select food preference
     function onSelectCategory(category) {
         //filter restaurant //needs to be adjusted
-        let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
+        let foodList = foodCardData.filter(a => a.categories.includes(category.id))
 
-        setRestaurants(restaurantList)
+        setFoodCards(foodList)
 
         setSelectedCategory(category)
     }
+
+
 
     function renderSearch() {
         return(
