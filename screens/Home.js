@@ -3,7 +3,7 @@ import { View, Text,TouchableOpacity, Image, SafeAreaView, StyleSheet, TextInput
 import { COLORS, FONTS, icons, images, SIZES } from "../constants";
 import { HorizontalFoodCard } from "../components"
 
-const Home = () => {
+const Home = ({navigation}) => {
 
     //Writing Dummy Data
     const categoryData = [
@@ -36,7 +36,7 @@ const Home = () => {
             description: "Burger with fries",
             price: "10.99",
             categories: [1, 2, 3],
-            calories: "70"
+            calories: "70",
         },
         {
             id: 2,
