@@ -13,7 +13,18 @@ const FoodDetail = () => {
         <View
         style={{
             flex: 1,
-            
+            backgroundColor: COLORS.white
         }}
+        >
+            {/* header */}
+
+            {/* body */}
+
+            {/* Footer */}
+
+        <Text>FoodDetail</Text>
+        </View>
     )
 }
+
+export default FoodDetail;
