@@ -246,7 +246,7 @@ const Home = ({navigation}) => {
                         marginBottom: SIZES.radius,
                         // marginTop: -50,
                     }}
-                    onPress={() => navigation.navigate("FoodDetail", {item})}
+                    // onPress={() => navigation.navigate("FoodDetail", {item})}
                 >
                     {/* image */}
                     <Image
