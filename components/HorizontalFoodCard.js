@@ -25,4 +25,4 @@ const HorizontalFoodCard = ({containerStyle, imageStyle, item,
     }
 }
 
-export default HorizontalFoodCard
+export default HorizontalFoodCard;

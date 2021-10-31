@@ -5,6 +5,7 @@ import { HorizontalFoodCard } from "../components"
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { FoodDetail } from "./FoodDetail"
+import { Header } from "../components"
 
 const Home = ({navigation}) => {
 
@@ -246,7 +247,7 @@ const Home = ({navigation}) => {
                         marginBottom: SIZES.radius,
                         // marginTop: -50,
                     }}
-                    // onPress={() => navigation.navigate("FoodDetail", {item})}
+                    onPress={() => navigation.navigate("FoodDetail", {item})}
                 >
                     {/* image */}
                     <Image
