@@ -1,9 +1,13 @@
 import React from "react";
 import { View, Text,TouchableOpacity, Image, SafeAreaView, StyleSheet, TextInput, FlatList } from "react-native";
 import { COLORS, FONTS, icons, images, SIZES } from "../constants";
+import { HorizontalFoodCard } from "../components"
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { FoodDetail } from "./FoodDetail"
+import { Header } from "../components"
 
-
-const Home = () => {
+const Home = ({navigation}) => {
 
     //Writing Dummy Data
     const categoryData = [
@@ -26,6 +30,44 @@ const Home = () => {
             id: 4,
             name: "Vegan",
             icon: icons.vegan,
+        }
+    ]
+    const foodCardData = [
+        {
+            id: 1,
+            name: "Cheese Burger",
+            icon: images.burger_restaurant_2,
+            description: "Burger with fries",
+            price: "10.99",
+            categories: [1, 2, 3],
+            calories: "70",
+        },
+        {
+            id: 2,
+            name: "Chciken Burger",
+            icon: images.crispy_chicken_burger,
+            description: "Crispy Fried chicken burger",
+            price: "10.99",
+            categories: [1, 3, 4],
+            calories: "50"
+        },
+        {
+            id: 3,
+            name: "Sushi",
+            icon: images.sushi,
+            description: "Delicate sushi",
+            price: "10.99",
+            categories: [1, 4],
+            calories: "60"
+        },
+        {
+            id: 4,
+            name: "Vegan",
+            icon: icons.vegan,
+            description: "Sample FOod Description",
+            price: "10.99",
+            categories: [1, 2, 3],
+            calories: "400",
         }
     ]
 
@@ -57,19 +99,22 @@ const Home = () => {
     ]
 
     const [categories, setCategories] = React.useState(categoryData)
+    const [foodCards, setFoodCards] = React.useState(foodCardData)
     const [selectedCategory, setSelectedCategory] = React.useState(null)
     const [restaurants, setRestaurants] = React.useState(restaurantData)
     // const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 
-
+    //To select food preference
     function onSelectCategory(category) {
         //filter restaurant //needs to be adjusted
-        let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
+        let foodList = foodCardData.filter(a => a.categories.includes(category.id))
 
-        setRestaurants(restaurantList)
+        setFoodCards(foodList)
 
         setSelectedCategory(category)
     }
+
+
 
     function renderSearch() {
         return(
@@ -108,7 +153,7 @@ const Home = () => {
             //onPress - will work later on
             >
                 <Image
-                source={icons.hamburger}
+                source={icons.filter}
                 style={{
                     height: 20,
                     width: 20,
@@ -134,6 +179,7 @@ const Home = () => {
                         alignItems: "center",
                         justifyContent: "center",
                         marginRight: SIZES.padding,
+                        marginBottom: -20,
                     }}
                     onPress={() => onSelectCategory(item)}
                 >
@@ -186,6 +232,91 @@ const Home = () => {
         )
     }
 
+    function renderFoodCards() {
+
+        const renderItem = ({item, index}) => {
+            return (
+                <TouchableOpacity
+                    style={{
+                        flexDirection: 'row',
+                        borderRadius: SIZES.radius,
+                        backgroundColor: COLORS.white,
+                        height: 150,
+                        alignItems: 'center',
+                        marginHorizontal: SIZES.padding,
+                        marginBottom: SIZES.radius,
+                        // marginTop: -50,
+                    }}
+                    //REMEMBER: pass the items and other dummy data as well
+                    onPress={() => navigation.navigate("FoodDetail", {item})}
+                >
+                    {/* image */}
+                    <Image
+                        source={item.icon}
+                        style={{
+                            marginTop: 10,
+                            height: 110,
+                            width: 110,
+                            marginBottom: 10,
+                            marginLeft: 20,
+                            marginRight: 15
+                        }}
+                    />
+
+                    <View style={{
+                        flex: 1
+                    }}
+                    >
+                        {/* Name */}
+                        <Text style={{ fontWeight: "bold", fontSize: 17, marginBottom: 10}}>
+                            {item.name}
+                        </Text>
+
+                        {/* Descriptionc */}
+                        <Text style={{ color: COLORS.darkgray2, ...FONTS.body4, marginBottom: 5}}>
+                            {item.description}
+                        </Text>
+
+                        {/* Price */}
+                        <Text style={{ marginTop: SIZES.base, fontWeight: "bold", }}>
+                            ${item.price}
+                        </Text>
+                    </View>
+
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            position: 'absolute',
+                            top: 5,
+                            right: SIZES.radius
+                        }}
+                    >
+                        <Image
+                            source={icons.fire}
+                            style={{
+                                width: 18,
+                                height: 21,
+                                marginTop: 1,
+                            }}
+                        />
+                        <Text style={{ color: COLORS.black, marginTop: 5, marginLeft: 3}}>
+                            {item.calories} Calories
+                        </Text>
+                    </View>
+
+                </TouchableOpacity>
+            )
+        }
+        return(
+            <FlatList
+                data = {foodCards}
+                keyExtractor={(item) => `${item.id}`}
+                showVerticalScrollIndicator={false}
+                renderItem={renderItem}
+                contentContainerStyle={{ paddingVertical: SIZES.padding * 2 }}
+            />
+        )
+    }
 
     return (
 
@@ -196,7 +327,38 @@ const Home = () => {
             {/* Search */}
             {renderSearch()}
 
+            {/* FoodPreferenceMenu */}
             {renderFoodPreference()}
+
+            {/* Food Cards */}
+            {renderFoodCards()}
+
+            {/* <FlatList
+
+                data = {categories}
+                keyExtractor={(item) => `${item.id}`}
+                showVerticalScrollIndicator={false}
+                renderItem={({item, index}) => {
+                    return (
+                        <HorizontalFoodCard
+                            containerStyle={{
+                                height: 130,
+                                alignItems: 'center',
+                                marginHorizontal: SIZES.padding,
+                                marginBottom: SIZES.radius
+                            }}
+                            imageStyle={{
+                                marginTop: 20,
+                                height: 110,
+                                width: 110
+                            }}
+                            item={item}
+                            onPress={() => console.log
+                            ("HorizontalFoodCard")}
+                        />
+                    )
+                }}
+            /> */}
 
         </View>
     )

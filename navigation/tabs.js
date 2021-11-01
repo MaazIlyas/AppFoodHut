@@ -149,7 +149,7 @@ const Tabs = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={icons.search}
+                            source={icons.pin}
                             resizeMode="contain"
                             style={{
                                 width: 25,
@@ -195,7 +195,7 @@ const Tabs = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={icons.user}
+                            source={icons.basket}
                             resizeMode="contain"
                             style={{
                                 width: 25,

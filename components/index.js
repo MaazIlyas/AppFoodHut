@@ -1,0 +1,6 @@
+//importing everything to use it in the file
+import HorizontalFoodCard from "./HorizontalFoodCard";
+import Header from "./Header";
+import IconButton from "./iconButton";
+import CartQuantityButton from "./CartQuantityButton"
+export { HorizontalFoodCard, Header, IconButton, CartQuantityButton }
