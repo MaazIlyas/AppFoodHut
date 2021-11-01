@@ -14,15 +14,15 @@ import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
 import {Header, IconButton, CartQuantityButton} from "../components"
 
-const FoodDetail = ({route}) => {
+const FoodDetail = ({route, navigation}) => {
 
     const [foodItem, setFooditem] = React.useState(null);
 
     React.useEffect(() => {
         let {item} = route.params;
         setFooditem(item)
-    }
-    )
+    })
+
     function renderHeader() {
         return (
             <Header
@@ -66,6 +66,77 @@ const FoodDetail = ({route}) => {
         )
     }
 
+
+    function renderDetails() {
+        return (
+
+            <View
+            style={{
+                marginTop: SIZES.radius,
+                marginBottom: SIZES.padding,
+                paddingHorizontal: SIZES.padding,
+            }}
+            >
+                {/* food card */}
+                <View
+                    style={{
+                        height:190,
+                        borderRadius: 15,
+                        backgroundColor: COLORS.lightGray2,
+                    }}
+                >
+                    {/* Calories & Favourite */}
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            marginTop: SIZES.base,
+                            paddingHorizontal: SIZES.radius,
+                        }}
+                    >
+                        {/* Calories */}
+                        <View
+                            style={{
+                                flexDirection: 'row'
+                            }}
+                        >
+                            <Image
+                                //showing calories
+                                source={icons.fire}
+                                style={{
+                                    width:30,
+                                    height:30
+                                }}
+                            />
+
+                            <Text
+                                style={{
+                                    color: COLORS.darkgray,
+                                }}
+                            >
+                                {foodItem?.calories} calories
+                            </Text>
+                        </View>
+
+                        {/* Favourite */}
+                        <Image
+                            source={icons.like}
+                            style={{
+                                width: 20,
+                                height: 20,
+                                //If it is like, color.primary otherwise color.gray
+                                tintColor: foodItem?.isFavourite ? 
+                                COLORS.primary : COLORS.darkgray
+                            }}
+                        />
+                    </View>
+
+                    {/* Food Image */}
+                </View>
+            </View>
+        )
+    }
+
     return (
         <View
             style={{
@@ -76,8 +147,14 @@ const FoodDetail = ({route}) => {
             {/* header */}
             {renderHeader()}
             
-
             {/* body */}
+            <ScrollView>
+                {/* FoodDetails */}
+                {renderDetails()}
+
+                {/* FoodItems */}
+            </ScrollView>
+            
 
             {/* Footer */}
 
