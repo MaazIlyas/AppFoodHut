@@ -12,7 +12,7 @@ import {
 
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
-import {Header, IconButton, CartQuantityButton} from "../components"
+import {Header, IconButton, CartQuantityButton, IconLabel} from "../components"
 
 const FoodDetail = ({route, navigation}) => {
 
@@ -132,6 +132,48 @@ const FoodDetail = ({route, navigation}) => {
                     </View>
 
                     {/* Food Image */}
+                    <Image
+                        source={foodItem?.icon}
+                        resizeMode="contain"
+                        style={{
+                            height: 170,
+                            width: "100%"
+                        }}
+                    />
+                </View>
+
+                {/* Food info */}
+                <View
+                    style={{
+                        marginTop: SIZES.padding
+                    }}
+                >
+                    {/* Name & Descriptio */}
+                    <Text
+                        style={{...FONTS.h1}}
+                    >
+                        {foodItem?.name}
+                    </Text>
+
+                    <Text
+                        style={{
+                            marginTop: SIZES.base,
+                            color: COLORS.darkgray,
+                            textAlign: 'justify',
+                            ...FONTS.body3
+                        }}
+                    >
+                        {foodItem?.details}
+                    </Text>
+
+                    {/* Ratings, Duration */}
+                    <View
+                        style={{
+                            flexDirection: 'row'
+                        }}
+                    >
+                        
+                    </View>
                 </View>
             </View>
         )
