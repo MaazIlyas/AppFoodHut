@@ -169,10 +169,38 @@ const FoodDetail = ({route, navigation}) => {
                     {/* Ratings, Duration */}
                     <View
                         style={{
-                            flexDirection: 'row'
+                            flexDirection: 'row',
+                            marginTop: SIZES.padding
                         }}
                     >
-                        
+                        {/* Rating */}
+                        <IconLabel
+                            containerStyle={{
+                                paddingHorizontal: 0
+                            }}
+                            icon={icons.clock}
+                            iconStyle={{
+                                color: COLORS.white
+                            }}
+                            label={"Preparation: " + foodItem?.duration}
+                            labelStyle={{
+                                color: COLORS.black
+                            }}
+                        />
+
+                        {/* Duration */}
+                        <IconLabel
+                            containerStyle={{
+                                marginLeft: 80,
+                                backgroundColor: COLORS.primary
+                            }}
+                            icon={icons.star}
+                            label={foodItem?.rating}
+                            labelStyle={{
+                                color: COLORS.white
+                            }}
+                        />
+
                     </View>
                 </View>
             </View>

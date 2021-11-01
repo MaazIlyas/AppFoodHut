@@ -14,8 +14,8 @@ labelStyle }) => {
             style={{
                 flexDirection: 'row',
                 paddingVertical: SIZES.base,
-                paddingHorizontal: SIZES.radius,
-                borderRadius: SIZES.radius,
+                paddingHorizontal: 15,
+                borderRadius: 10,
                 ...containerStyle
             }}
         >
