@@ -2,4 +2,5 @@
 import HorizontalFoodCard from "./HorizontalFoodCard";
 import Header from "./Header";
 import IconButton from "./iconButton";
-export { HorizontalFoodCard, Header, IconButton }
+import CartQuantityButton from "./CartQuantityButton"
+export { HorizontalFoodCard, Header, IconButton, CartQuantityButton }

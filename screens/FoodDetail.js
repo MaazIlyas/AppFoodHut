@@ -3,15 +3,26 @@ import {
     View,
     Text,
     Image,
-    ScrollView
+    ScrollView,
+    StyleSheet,
+    SafeAreaView,
+    TouchableOpacity,
+    Animated
 } from 'react-native';
 
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
-import {Header, IconButton} from "../components"
+import {Header, IconButton, CartQuantityButton} from "../components"
 
-const FoodDetail = () => {
+const FoodDetail = ({route}) => {
 
+    const [foodItem, setFooditem] = React.useState(null);
+
+    React.useEffect(() => {
+        let {item} = route.params;
+        setFooditem(item)
+    }
+    )
     function renderHeader() {
         return (
             <Header
@@ -33,13 +44,19 @@ const FoodDetail = () => {
                             borderWidth: 1,
                             boderRadius: SIZES.radius,
                             borderColor: 'green',
+                            marginLeft: 15,
                         }}
                         iconStyle={{
                             width:20,
                             height:20,
                             tintColor: COLORS.black
                         }}
-                        onPress={() => console.log("Back") }
+                        onPress={() => navigation.goBack()}
+                    />
+                }
+                rightComponent={
+                    <CartQuantityButton
+                    quantity={3}
                     />
                 }
             />

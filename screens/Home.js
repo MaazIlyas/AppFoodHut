@@ -247,6 +247,7 @@ const Home = ({navigation}) => {
                         marginBottom: SIZES.radius,
                         // marginTop: -50,
                     }}
+                    //REMEMBER: pass the items and other dummy data as well
                     onPress={() => navigation.navigate("FoodDetail", {item})}
                 >
                     {/* image */}
