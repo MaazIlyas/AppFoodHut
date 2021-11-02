@@ -12,7 +12,9 @@ import {
 
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
-import {Header, IconButton, CartQuantityButton, IconLabel} from "../components"
+import {Header, IconButton, CartQuantityButton, IconLabel, TextButton} from "../components"
+
+const food = ['Small', 'Medium', 'Large']
 
 const FoodDetail = ({route, navigation}) => {
 
@@ -201,6 +203,35 @@ const FoodDetail = ({route, navigation}) => {
                             }}
                         />
 
+                    </View>
+
+                    {/* Dummy sizes */}
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            marginTop: SIZES.padding,
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Text Stele={{...FONTS.h3}}>
+                            Size: 
+                        </Text>
+
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                flexWrap: 'wrap',
+                                marginLeft: SIZES.padding
+                            }}
+                        >
+                            {food.map((item, index) => {
+                                return(
+                                    <TextButton
+                                        key={`Sizes-${index}`}
+                                    />
+                                )
+                            })}
+                        </View>
                     </View>
                 </View>
             </View>
