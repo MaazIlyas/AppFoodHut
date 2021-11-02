@@ -12,13 +12,30 @@ import {
 
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
-import {Header, IconButton, CartQuantityButton, IconLabel, TextButton} from "../components"
+import {Header, IconButton, CartQuantityButton, IconLabel, TextButton, LineDivider} from "../components"
+import { Line } from 'react-native-svg';
 
-const food = ['Small', 'Medium', 'Large']
+// const food = ['Small', 'Medium', 'Large']
+
+const food = [
+    {
+        id: 1,
+        size: 'Small'
+    }, 
+    {
+        id: 2,
+        size: 'Medium'
+    },
+    {
+        id: 3,
+        size: 'Large'
+    }]
 
 const FoodDetail = ({route, navigation}) => {
 
     const [foodItem, setFooditem] = React.useState(null);
+    const [selectedSize, setSelectedSize] = React.useState(2)
+
 
     React.useEffect(() => {
         let {item} = route.params;
@@ -213,10 +230,13 @@ const FoodDetail = ({route, navigation}) => {
                             alignItems: 'center'
                         }}
                     >
-                        <Text Stele={{...FONTS.h3}}>
-                            Size: 
+                        <Text style={{
+                            fontWeight: "700",
+                            fontSize: 20,
+                        }}>
+                            Sizes: 
                         </Text>
-
+                        {/* Importing size components */}
                         <View
                             style={{
                                 flexDirection: 'row',
@@ -228,6 +248,21 @@ const FoodDetail = ({route, navigation}) => {
                                 return(
                                     <TextButton
                                         key={`Sizes-${index}`}
+                                        buttonContainerStyle={{
+                                            width: 90,
+                                            height: 45,
+                                            margin: 5,
+                                            borderWidth: 1,
+                                            borderRadius: 15,
+                                            borderColor: selectedSize == item.id ? COLORS.primary : COLORS.darkgray, 
+                                            backgroundColor: selectedSize == item.id ? COLORS.primary : null
+                                        }}
+                                        label={item.size}
+                                        labelStyle={{
+                                            color: selectedSize == item.id ? COLORS.white : COLORS.darkgray,
+                                            ...FONTS.body2
+                                        }}
+                                        onPress={() => setSelectedSize(item.id)}
                                     />
                                 )
                             })}
@@ -252,6 +287,9 @@ const FoodDetail = ({route, navigation}) => {
             <ScrollView>
                 {/* FoodDetails */}
                 {renderDetails()}
+
+                {/* Adding line Divider */}
+                <LineDivider/>
 
                 {/* FoodItems */}
             </ScrollView>

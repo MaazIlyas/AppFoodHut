@@ -5,4 +5,5 @@ import IconButton from "./iconButton";
 import IconLabel from "./iconLabel";
 import CartQuantityButton from "./CartQuantityButton";
 import TextButton from "./TextButton";
-export { HorizontalFoodCard, Header, IconButton, CartQuantityButton, IconLabel, TextButton }
+import LineDivider from "./LineDivider";
+export { HorizontalFoodCard, Header, IconButton, CartQuantityButton, IconLabel, TextButton, LineDivider }
