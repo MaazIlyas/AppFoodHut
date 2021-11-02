@@ -12,11 +12,30 @@ import {
 
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
-import {Header, IconButton, CartQuantityButton} from "../components"
+import {Header, IconButton, CartQuantityButton, IconLabel, TextButton, LineDivider} from "../components"
+import { Line } from 'react-native-svg';
+
+// const food = ['Small', 'Medium', 'Large']
+
+const food = [
+    {
+        id: 1,
+        size: 'Small'
+    }, 
+    {
+        id: 2,
+        size: 'Medium'
+    },
+    {
+        id: 3,
+        size: 'Large'
+    }]
 
 const FoodDetail = ({route, navigation}) => {
 
     const [foodItem, setFooditem] = React.useState(null);
+    const [selectedSize, setSelectedSize] = React.useState(2)
+
 
     React.useEffect(() => {
         let {item} = route.params;
@@ -132,6 +151,123 @@ const FoodDetail = ({route, navigation}) => {
                     </View>
 
                     {/* Food Image */}
+                    <Image
+                        source={foodItem?.icon}
+                        resizeMode="contain"
+                        style={{
+                            height: 170,
+                            width: "100%"
+                        }}
+                    />
+                </View>
+
+                {/* Food info */}
+                <View
+                    style={{
+                        marginTop: SIZES.padding
+                    }}
+                >
+                    {/* Name & Descriptio */}
+                    <Text
+                        style={{...FONTS.h1}}
+                    >
+                        {foodItem?.name}
+                    </Text>
+
+                    <Text
+                        style={{
+                            marginTop: SIZES.base,
+                            color: COLORS.darkgray,
+                            textAlign: 'justify',
+                            ...FONTS.body3
+                        }}
+                    >
+                        {foodItem?.details}
+                    </Text>
+
+                    {/* Ratings, Duration */}
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            marginTop: SIZES.padding
+                        }}
+                    >
+                        {/* Rating */}
+                        <IconLabel
+                            containerStyle={{
+                                paddingHorizontal: 0
+                            }}
+                            icon={icons.clock}
+                            iconStyle={{
+                                color: COLORS.white
+                            }}
+                            label={"Preparation: " + foodItem?.duration}
+                            labelStyle={{
+                                color: COLORS.black
+                            }}
+                        />
+
+                        {/* Duration */}
+                        <IconLabel
+                            containerStyle={{
+                                marginLeft: 80,
+                                backgroundColor: COLORS.primary
+                            }}
+                            icon={icons.star}
+                            label={foodItem?.rating}
+                            labelStyle={{
+                                color: COLORS.white
+                            }}
+                        />
+
+                    </View>
+
+                    {/* Dummy sizes */}
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            marginTop: SIZES.padding,
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Text style={{
+                            fontWeight: "700",
+                            fontSize: 20,
+                        }}>
+                            Sizes: 
+                        </Text>
+                        {/* Importing size components */}
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                flexWrap: 'wrap',
+                                marginLeft: SIZES.padding
+                            }}
+                        >
+                            {food.map((item, index) => {
+                                return(
+                                    <TextButton
+                                        key={`Sizes-${index}`}
+                                        buttonContainerStyle={{
+                                            width: 90,
+                                            height: 45,
+                                            margin: 5,
+                                            borderWidth: 1,
+                                            borderRadius: 15,
+                                            borderColor: selectedSize == item.id ? COLORS.primary : COLORS.darkgray, 
+                                            backgroundColor: selectedSize == item.id ? COLORS.primary : null
+                                        }}
+                                        label={item.size}
+                                        labelStyle={{
+                                            color: selectedSize == item.id ? COLORS.white : COLORS.darkgray,
+                                            ...FONTS.body2
+                                        }}
+                                        onPress={() => setSelectedSize(item.id)}
+                                    />
+                                )
+                            })}
+                        </View>
+                    </View>
                 </View>
             </View>
         )
@@ -151,6 +287,9 @@ const FoodDetail = ({route, navigation}) => {
             <ScrollView>
                 {/* FoodDetails */}
                 {renderDetails()}
+
+                {/* Adding line Divider */}
+                <LineDivider/>
 
                 {/* FoodItems */}
             </ScrollView>

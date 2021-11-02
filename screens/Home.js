@@ -38,6 +38,11 @@ const Home = ({navigation}) => {
             name: "Cheese Burger",
             icon: images.burger_restaurant_2,
             description: "Burger with fries",
+            // New
+            details: "A hamburger topped with cheese. The slice of cheese is placed on top of the meat patty. It includes toppings such as lettuce, tomato, onion, pickles, bacon, mayonnaise, ketchup, and mustard With a plate of fries.",
+            rating: 4.5,
+            duration: "20 minutes",
+            
             price: "10.99",
             categories: [1, 2, 3],
             calories: "70",
