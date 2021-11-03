@@ -158,7 +158,7 @@ const Home = ({navigation}) => {
             //onPress - will work later on
             >
                 <Image
-                source={icons.filter}
+                source={icons.basket}
                 style={{
                     height: 20,
                     width: 20,

@@ -364,7 +364,6 @@ const FoodDetail = ({route, navigation}) => {
                 />
 
                 {/* Text Button Showing price */}
-
                 <TextButton
                     buttonContainerStyle={{
                         flex: 1,
@@ -377,6 +376,7 @@ const FoodDetail = ({route, navigation}) => {
                     }}
                     label="Buy Now"
                     label2="$15.99"
+                    onPress={() => {navigation.navigate('Cart')}}
                 />
 
             </View>

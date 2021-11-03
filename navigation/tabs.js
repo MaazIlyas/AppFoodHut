@@ -8,7 +8,7 @@ import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom
 
 import { isIphoneX } from 'react-native-iphone-x-helper';
 
-import { Home, Reservation, Cart, Menu } from "../screens"
+import { Home, Reservation, Menu, Profile } from "../screens"
 
 import { COLORS, icons } from "../constants"
 
@@ -190,12 +190,12 @@ const Tabs = () => {
             />
 
             <Tab.Screen
-                name="Cart"
-                component={Cart}
+                name="Profile"
+                component={Profile}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={icons.basket}
+                            source={icons.user}
                             resizeMode="contain"
                             style={{
                                 width: 25,
