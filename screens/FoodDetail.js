@@ -12,7 +12,7 @@ import {
 
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
-import {Header, IconButton, CartQuantityButton, IconLabel, TextButton, LineDivider} from "../components"
+import {Header, IconButton, CartQuantityButton, IconLabel, TextButton, LineDivider, StepperInput} from "../components"
 import { Line } from 'react-native-svg';
 import {Picker} from '@react-native-picker/picker';
 
