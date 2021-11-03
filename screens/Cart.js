@@ -17,7 +17,7 @@ import { FONTS, SIZES, COLORS, icons, images } from "../constants";
 
 const Cart = ({navigation}) => {
 
-    const cartData = [
+    const cartList = [
         {
             id: 1,
             name: "Cheese Burger",
@@ -31,6 +31,7 @@ const Cart = ({navigation}) => {
             price: "10.99",
             categories: [1, 2, 3],
             calories: "70",
+            qty: 1,
         },
         {
             id: 2,
@@ -39,7 +40,8 @@ const Cart = ({navigation}) => {
             description: "Crispy Fried chicken burger",
             price: "10.99",
             categories: [1, 3, 4],
-            calories: "50"
+            calories: "50",
+            qty: 1,
         },
         {
             id: 3,
@@ -48,20 +50,20 @@ const Cart = ({navigation}) => {
             description: "Delicate sushi",
             price: "10.99",
             categories: [1, 4],
-            calories: "60"
-        },
-        {
-            id: 4,
-            name: "Vegan",
-            icon: icons.vegan,
-            description: "Sample FOod Description",
-            price: "10.99",
-            categories: [1, 2, 3],
-            calories: "400",
+            calories: "60",
+            qty: 1,
         }
     ]
 
-    const [cartList, setCartList] = React.useState(cartData)
+    const [cartData, setCartData] = React.useState(cartList)
+
+    function updateQuantityHandler(newQty, id) {
+        const newCartList = cartData.map(cl =>(
+            cl.id === id ? {...cl, qty: newQty} : cl
+        ))
+
+        setCartData(newCartList)
+    }
 
     function renderHeader() {
         return (
@@ -162,7 +164,21 @@ const Cart = ({navigation}) => {
                         </View>
 
                         {/* Adding Stepper Input */}
-
+                        <StepperInput
+                            containerStyle={{
+                                height: 50,
+                                width: 125,
+                                backgroundColor: COLORS.white
+                            }}
+                            value={data.item.qty}
+                            onAdd={() => updateQuantityHandler(data.item.qty +1, 
+                                data.item.id)}
+                            onMinus={() => {
+                                if (data.item.qty > 1) {
+                                    updateQuantityHandler(data.item.qty -1, data.item.id)
+                                }
+                            }}
+                        />
 
                     </View>
                 )}
