@@ -123,7 +123,47 @@ const Cart = ({navigation}) => {
                             ...styles.cartItemContainer
                         }}
                     >
-                        <Text>{data.item.name}</Text>
+                        {/* Creating Food Image */}
+                        <View
+                            style={{
+                                width: 90,
+                                height: 100,
+                                marginLeft: -10
+                            }}
+                        >
+                            <Image
+                                source={data.item.icon}
+                                resizeMode = 'contain'
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    position: 'absolute',
+                                    top: 10
+                                }}
+                            />
+
+                        </View>
+                        {/* Food Info */}
+                        <View
+                            style={{
+                                flex: 1
+                            }}
+                        >
+                            <Text
+                                style={{...FONTS.body3}}
+                            >
+                                {data.item.name}
+                            </Text>
+                            <Text
+                                style={{color: COLORS.primary, ...FONTS.h3}}
+                            >
+                                ${data.item.price}
+                            </Text>
+                        </View>
+
+                        {/* Adding Stepper Input */}
+
+
                     </View>
                 )}
             />
