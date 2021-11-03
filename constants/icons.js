@@ -31,6 +31,8 @@ export const allFV = require("../assets/icons/all-food-veg.png");
 export const filter = require("../assets/icons/filter.png");
 export const clock = require("../assets/icons/Clock.png");
 export const locationMap = require("../assets/icons/locationMap.png");
+export const plus = require("../assets/icons/plus.png");
+export const minus = require("../assets/icons/minus.png");
 
 export default {
     back,
@@ -64,4 +66,6 @@ export default {
     filter,
     clock,
     locationMap,
+    plus,
+    minus
 }

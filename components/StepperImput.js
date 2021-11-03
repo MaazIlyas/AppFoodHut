@@ -20,7 +20,7 @@ const StepperInput =({
                 height: 60,
                 width: 130,
                 backgroundColor: COLORS.lightGray2,
-                borderRadius: SIZES.radius,
+                borderRadius: 20,
                 ...containerStyle
             }}
         >
@@ -30,7 +30,7 @@ const StepperInput =({
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}
-                icon={icons.back}
+                icon={icons.minus}
                 iconStyle={{
                     height: 25,
                     width: 25,
@@ -59,7 +59,7 @@ const StepperInput =({
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}
-                icon={icons.back}
+                icon={icons.plus}
                 iconStyle={{
                     height: 25,
                     width: 25,

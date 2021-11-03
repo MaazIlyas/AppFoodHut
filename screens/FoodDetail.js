@@ -37,6 +37,7 @@ const FoodDetail = ({route, navigation}) => {
 
     const [foodItem, setFooditem] = React.useState(null);
     const [selectedSize, setSelectedSize] = React.useState(2)
+    const [qty, setQty] = React.useState(1)
 
 
     React.useEffect(() => {
@@ -351,7 +352,17 @@ const FoodDetail = ({route, navigation}) => {
                     paddingBottom: SIZES.radius
                 }}
             >
-                
+                {/* Stepper Input */}
+                <StepperInput
+                    value={qty}
+                    onAdd={() => setQty(qty + 1)}
+                    onMinus={() => {
+                        if (qty > 1) {
+                            setQty(qty - 1)
+                        }
+                    }}
+                />
+
             </View>
         )
     }
