@@ -14,6 +14,8 @@ import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
 import {Header, IconButton, CartQuantityButton, IconLabel, TextButton, LineDivider} from "../components"
 import { Line } from 'react-native-svg';
+import {Picker} from '@react-native-picker/picker';
+
 
 // const food = ['Small', 'Medium', 'Large']
 
@@ -273,6 +275,87 @@ const FoodDetail = ({route, navigation}) => {
         )
     }
 
+    function renderLocation() {
+        return (
+            <View
+                style={{
+                    flexDirection: 'row',
+                    marginVertical: SIZES.padding,
+                    paddingHorizontal: SIZES.padding,
+                    alignItems: 'center'
+                }}
+            >
+                {/* Location image */}
+                <Image
+                    source={icons.location}
+                    style={{
+                        width: 50,
+                        height: 60,
+                        borderRadius: 1,
+                        marginLeft: 10,
+                        marginTop: 10
+                    }}
+                />
+
+                {/* InfoSection "Your selected branch.. change?" */}
+                <View
+                    style={{
+                        flex: 1,
+                        marginLeft: SIZES.radius,
+                        justifyContent: 'center'
+                    }}
+                >
+                    <Text style={{
+                        fontWeight: '500', 
+                        textAlign: 'center',
+                        fontSize: 17
+                }}
+                        >
+                            Your selected Branch
+                            </Text>
+                            <TouchableOpacity
+                                style={{
+                                    backgroundColor: COLORS.secondary,
+                                    borderRadius: SIZES.radius,
+                                    marginTop: 10
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        textAlign: 'center',
+                                        fontWeight: '700',
+                                        fontSize: 26,
+                                        
+                                        padding: 5,
+                                        
+                                    }}
+                                >Darwin</Text>
+                            </TouchableOpacity>
+                            
+                    
+                    {/* <Text style={{color: COLORS.darkgray, ...FONTS.body4}}></Text> */}
+                </View>
+                
+            </View>
+        )
+    }
+
+    function renderFooter() {
+        return (
+            <View
+                style={{
+                    flexDirection: 'row',
+                    height: 120,
+                    alignItems: 'center',
+                    paddingHorizontal: SIZES.padding,
+                    paddingBottom: SIZES.radius
+                }}
+            >
+                
+            </View>
+        )
+    }
+
     return (
         <View
             style={{
@@ -291,13 +374,15 @@ const FoodDetail = ({route, navigation}) => {
                 {/* Adding line Divider */}
                 <LineDivider/>
 
-                {/* FoodItems */}
+                {/* SeeRestaurant'sLocation */}
+                {renderLocation()}
             </ScrollView>
             
 
             {/* Footer */}
-
-        {/* <Text>FoodDetail</Text> */}
+            <LineDivider/>
+            {renderFooter()}
+            
         </View>
     )
 }
