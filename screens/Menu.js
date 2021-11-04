@@ -6,7 +6,7 @@ import {
 const Menu = () => {
     return (
         <View>
-            <Text>Menu</Text>
+            <Text>Location</Text>
         </View>
     )
 }

@@ -127,13 +127,15 @@ const FoodDetail = ({route, navigation}) => {
                                 source={icons.fire}
                                 style={{
                                     width:30,
-                                    height:30
+                                    height: 30,
                                 }}
                             />
 
                             <Text
                                 style={{
                                     color: COLORS.darkgray,
+                                    fontSize: 15,
+                                    marginTop: 10
                                 }}
                             >
                                 {foodItem?.calories} calories
@@ -148,7 +150,8 @@ const FoodDetail = ({route, navigation}) => {
                                 height: 20,
                                 //If it is like, color.primary otherwise color.gray
                                 tintColor: foodItem?.isFavourite ? 
-                                COLORS.primary : COLORS.darkgray
+                                COLORS.primary : COLORS.darkgray,
+                                marginTop: 7
                             }}
                         />
                     </View>

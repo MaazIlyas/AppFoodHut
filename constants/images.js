@@ -9,7 +9,8 @@ const baked_fries = require("../assets/images/baked-fries.jpg");
 const burger_restaurant_1 = require("../assets/images/burger-restaurant.jpg");
 const burger_restaurant_2 = require("../assets/images/burger-restaurant-2.jpg");
 const chicago_hot_dog = require("../assets/images/chicago-hot-dog.jpg");
-const crispy_chicken_burger = require("../assets/images/crispy-chicken-burger.jpg");
+
+const chickenBurger = require("../assets/images/crispy-chicken-burger.jpg");
 const fries_restaurant = require("../assets/images/fries-restaurant.jpg");
 const hawaiian_pizza = require("../assets/images/hawaiian-pizza.jpg");
 const honey_mustard_chicken_burger = require("../assets/images/honey-mustard-chicken-burger.jpg");
@@ -26,9 +27,14 @@ const pizza_restaurant = require("../assets/images/pizza-restaurant.jpg");
 const pizza = require("../assets/images/pizza.jpg");
 const salad = require("../assets/images/salad.jpg");
 const sarawak_laksa = require("../assets/images/sarawak-laksa.jpg");
-const sushi = require("../assets/images/sushi.jpg");
+const sushi = require("../assets/images/sushi.png");
 const teh_c_peng = require("../assets/images/teh-c-peng.jpg");
 const tomato_pasta = require("../assets/images/tomato-pasta.jpg");
+const smokeyVeganPlatter = require("../assets/images/smokeyVeganPlatter.png");
+const crispy_chicken_burger = require("../assets/images/chickenBurger.png");
+const spinach = require("../assets/images/spinach.png");
+const grilledEggplant = require("../assets/images/grilledEggplant.png");
+
 
 export default {
     avatar_1,
@@ -61,5 +67,11 @@ export default {
     sushi,
     teh_c_peng,
     tomato_pasta,
+
+    smokeyVeganPlatter,
+    chickenBurger,
+    spinach,
+    grilledEggplant,
+
 
 }

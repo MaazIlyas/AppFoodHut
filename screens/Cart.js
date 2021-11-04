@@ -7,7 +7,8 @@ import {
     Header,
     IconButton,
     CartQuantityButton,
-    StepperInput
+    StepperInput,
+    FooterTotal
 } from "../components";
 import HomeNavButton from "../components/HomeNavButton";
 
@@ -231,6 +232,11 @@ const Cart = ({navigation}) => {
             {renderCartList()}
 
             {/* Footer */}
+            <FooterTotal
+                subTotal={39.97}
+                shippingFree= {0.00}
+                total={37.97}
+            />
 
 
             <Text>Cart</Text>

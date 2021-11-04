@@ -1,11 +1,7 @@
 import React from "react";
-import { View, Text,TouchableOpacity, Image, SafeAreaView, StyleSheet, TextInput, FlatList } from "react-native";
+import { View, Text,TouchableOpacity, Image, SafeAreaView, StyleSheet, TextInput, FlatList, useEffect } from "react-native";
 import { COLORS, FONTS, icons, images, SIZES } from "../constants";
-import { HorizontalFoodCard } from "../components"
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { FoodDetail } from "./FoodDetail"
-import { Header } from "../components"
+
 
 const Home = ({navigation}) => {
 
@@ -44,36 +40,81 @@ const Home = ({navigation}) => {
             duration: "20 minutes",
             
             price: "10.99",
-            categories: [1, 2, 3],
+            categories: [1, 2],
             calories: "70",
         },
         {
             id: 2,
-            name: "Chciken Burger",
-            icon: images.crispy_chicken_burger,
-            description: "Crispy Fried chicken burger",
+            name: "Spinach",
+            icon: images.spinach,
+            description: "Sample FOod Description",
+
+            details: "Throw some spinach into your morning omelet, or try chef Gavin Kaysen's creamed spinach dish.",
+            rating: 4.7,
+            duration: "15 minutes",
+
             price: "10.99",
             categories: [1, 3, 4],
-            calories: "50"
+            calories: "400",
         },
         {
             id: 3,
-            name: "Sushi",
-            icon: images.sushi,
-            description: "Delicate sushi",
+            name: "Chciken Burger",
+            icon: images.crispy_chicken_burger,
+            description: "Crispy Fried chicken burger",
+
+            details: "A hamburger topped with cheese. The slice of cheese is placed on top of the meat patty. It includes toppings such as lettuce, tomato, onion, pickles, bacon, mayonnaise, ketchup, and mustard With a plate of fries.",
+            rating: 4.0,
+            duration: "15 minutes",
+
             price: "10.99",
-            categories: [1, 4],
-            calories: "60"
+            categories: [1, 2],
+            calories: "50"
         },
         {
             id: 4,
-            name: "Vegan",
-            icon: icons.vegan,
+            name: "Grilled Eggplant",
+            icon: images.grilledEggplant,
             description: "Sample FOod Description",
+
+            details: "Throw some spinach into your morning omelet, or try chef Gavin Kaysen's creamed spinach dish.",
+            rating: 4.2,
+            duration: "15 minutes",
+
             price: "10.99",
-            categories: [1, 2, 3],
-            calories: "400",
-        }
+            categories: [1, 3],
+            calories: "55",
+        },
+        {
+            id: 5,
+            name: "Smokey Vegan Platter",
+            icon: images.smokeyVeganPlatter,
+            description: "Sample FOod Description",
+
+            details: "Throw some spinach into your morning omelet, or try chef Gavin Kaysen's creamed spinach dish.",
+            rating: 4.2,
+            duration: "15 minutes",
+
+            price: "10.99",
+            categories: [1, 3, 4],
+            calories: "30"
+        },
+        {
+            
+            id: 6,
+            name: "Sushi",
+            icon: images.sushi,
+            description: "Delicate sushi",
+
+            details: "Japanese cuisine encompasses the regional and traditional foods of Japan, which have developed through centuries of political, economic, and social changes.",
+            rating: 4.9,
+            duration: "15 minutes",
+
+            price: "10.99",
+            categories: [1, 2],
+            calories: "60"
+        },
+
     ]
 
     // price rating
@@ -103,11 +144,18 @@ const Home = ({navigation}) => {
         }
     ]
 
+    // useEffect(()=>{
+    //     console.log("Apple")
+    // },[]);
+
+    let x = 1;
     const [categories, setCategories] = React.useState(categoryData)
     const [foodCards, setFoodCards] = React.useState(foodCardData)
-    const [selectedCategory, setSelectedCategory] = React.useState(categories.findIndex(item => item.id === 1))
+    const [selectedCategory, setSelectedCategory] = React.useState({"icon": 28, "id": 1, "name": "All"})
+    
+    // console.log(selectedCategory);
+    
     const [restaurants, setRestaurants] = React.useState(restaurantData)
-    // const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 
     //To select food preference
     function onSelectCategory(category) {
@@ -118,8 +166,6 @@ const Home = ({navigation}) => {
 
         setSelectedCategory(category)
     }
-
-
 
     function renderSearch() {
         return(
@@ -158,7 +204,7 @@ const Home = ({navigation}) => {
             //onPress - will work later on
             >
                 <Image
-                source={icons.basket}
+                source={icons.filter}
                 style={{
                     height: 20,
                     width: 20,
@@ -167,7 +213,6 @@ const Home = ({navigation}) => {
                 />
             </TouchableOpacity>
         </View>
-
         )
     }
         
@@ -187,7 +232,9 @@ const Home = ({navigation}) => {
                         marginBottom: -20,
                     }}
                     onPress={() => onSelectCategory(item)}
+                    
                 >
+                    {/* {console.log(selectedCategory)} */}
                     <View
                         style={{
                             width: 50,
@@ -253,7 +300,7 @@ const Home = ({navigation}) => {
                         // marginTop: -50,
                     }}
                     //REMEMBER: pass the items and other dummy data as well
-                    onPress={() => {navigation.navigate('FoodDetail')}}
+                    onPress={() => navigation.navigate("FoodDetail", {item})}
                 >
                     {/* image */}
                     <Image
@@ -328,6 +375,7 @@ const Home = ({navigation}) => {
         <View style={{
             flex:1
         }}>
+
             {/* Move it to a function after getting to know the way */}
             {/* Search */}
             {renderSearch()}
