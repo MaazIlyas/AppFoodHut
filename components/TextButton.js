@@ -8,7 +8,7 @@ import { FONTS, COLORS } from "../constants";
 
 const TextButton = ({ 
     buttonContainerStyle, label, labelStyle, 
-    onPress, label2 = "", label2Style }) => {
+    onPress, label2 = "", label2Style, qty }) => {
     return (
         <TouchableOpacity
             style={{
@@ -17,6 +17,7 @@ const TextButton = ({
                 backgroundColor: COLORS.primary,
                 ...buttonContainerStyle
             }}
+            
             onPress={onPress}
         >
             <Text

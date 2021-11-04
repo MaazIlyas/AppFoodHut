@@ -36,7 +36,7 @@ const food = [
 const FoodDetail = ({route, navigation}) => {
 
     const [foodItem, setFooditem] = React.useState(null);
-    const [selectedSize, setSelectedSize] = React.useState(2)
+    const [selectedSize, setSelectedSize] = React.useState(1)
     const [qty, setQty] = React.useState(1)
 
 
@@ -45,6 +45,19 @@ const FoodDetail = ({route, navigation}) => {
         setFooditem(item)
     })
 
+    function addQty () {
+        setQty(qty + 1)
+        tempItem = foodItem
+        itemNewPrice = parseFloat(tempItem?.price)
+        itemNewPrice += itemNewPrice
+        console.log(itemNewPrice.toFixed(2))
+
+        // tempItem?.price = tempItem?.price + tempItem?.price
+
+        // setFooditem(tempItem)
+    }
+
+    const [price, setPrice] = React.useState()
     function renderHeader() {
         return (
             <Header
@@ -79,12 +92,10 @@ const FoodDetail = ({route, navigation}) => {
                 rightComponent={
                     <CartQuantityButton
                     quantity={3}
+                    onPress={() => navigation.navigate("Cart")}
                     />
                 }
             />
-            
-
-            
         )
     }
 
@@ -269,6 +280,7 @@ const FoodDetail = ({route, navigation}) => {
                                             ...FONTS.body2
                                         }}
                                         onPress={() => setSelectedSize(item.id)}
+                                        qty={qty.toFixed(2)}
                                     />
                                 )
                             })}
@@ -358,7 +370,8 @@ const FoodDetail = ({route, navigation}) => {
                 {/* Stepper Input */}
                 <StepperInput
                     value={qty}
-                    onAdd={() => setQty(qty + 1)}
+                    // onAdd={() => setQty(qty + 1)}
+                    onAdd = {() => addQty()}
                     onMinus={() => {
                         if (qty > 1) {
                             setQty(qty - 1)
@@ -377,8 +390,8 @@ const FoodDetail = ({route, navigation}) => {
                         borderRadius: 10,
                         backgroundColor: COLORS.primary
                     }}
-                    label="Buy Now"
-                    label2="$15.99"
+                    label="Add"
+                    label2={foodItem?.price}
                     onPress={() => {navigation.navigate('Cart')}}
                 />
 

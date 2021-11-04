@@ -39,23 +39,25 @@ const Home = ({navigation}) => {
             rating: 4.5,
             duration: "20 minutes",
             
-            price: "10.99",
+            price: "16.00",
             categories: [1, 2],
             calories: "70",
+            inCart: 0,
         },
         {
             id: 2,
             name: "Spinach",
             icon: images.spinach,
-            description: "Sample FOod Description",
+            description: "Fried Spinach",
 
             details: "Throw some spinach into your morning omelet, or try chef Gavin Kaysen's creamed spinach dish.",
             rating: 4.7,
             duration: "15 minutes",
 
-            price: "10.99",
+            price: "19.00",
             categories: [1, 3, 4],
             calories: "400",
+            inCart: 0,
         },
         {
             id: 3,
@@ -67,9 +69,10 @@ const Home = ({navigation}) => {
             rating: 4.0,
             duration: "15 minutes",
 
-            price: "10.99",
+            price: "10.00",
             categories: [1, 2],
-            calories: "50"
+            calories: "50",
+            inCart: 0,
         },
         {
             id: 4,
@@ -81,9 +84,10 @@ const Home = ({navigation}) => {
             rating: 4.2,
             duration: "15 minutes",
 
-            price: "10.99",
+            price: "11.00",
             categories: [1, 3],
             calories: "55",
+            inCart: 0,
         },
         {
             id: 5,
@@ -95,9 +99,10 @@ const Home = ({navigation}) => {
             rating: 4.2,
             duration: "15 minutes",
 
-            price: "10.99",
+            price: "12.00",
             categories: [1, 3, 4],
-            calories: "30"
+            calories: "30",
+            inCart: 0,
         },
         {
             
@@ -110,9 +115,10 @@ const Home = ({navigation}) => {
             rating: 4.9,
             duration: "15 minutes",
 
-            price: "10.99",
+            price: "10.00",
             categories: [1, 2],
-            calories: "60"
+            calories: "60",
+            inCart: 0,
         },
 
     ]
