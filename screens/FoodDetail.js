@@ -36,25 +36,53 @@ const food = [
 const FoodDetail = ({route, navigation}) => {
 
     const [foodItem, setFooditem] = React.useState(null);
+    const [foodItemPrice, setFooditemPrice] = React.useState(null);
     const [selectedSize, setSelectedSize] = React.useState(1)
     const [qty, setQty] = React.useState(1)
+    const [realPrice, setRealPrice] = React.useState(null)
+    
 
 
     React.useEffect(() => {
         let {item} = route.params;
         setFooditem(item)
-    })
+        setFooditemPrice(item)
+        setRealPrice(parseFloat(foodItem?.price))
+    }, [])
 
-    function addQty () {
+    const [itemData, setItemData] = React.useState(foodItem)
+
+    function addQtyAndSettingPrice () {
         setQty(qty + 1)
-        tempItem = foodItem
-        itemNewPrice = parseFloat(tempItem?.price)
-        itemNewPrice += itemNewPrice
-        console.log(itemNewPrice.toFixed(2))
+        itemOriginalPrice = parseFloat(foodItemPrice?.price)
+        itemNewPrice = parseFloat(foodItem?.price)
+        itemNewPrice += itemOriginalPrice
 
-        // tempItem?.price = tempItem?.price + tempItem?.price
+        console.log(itemNewPrice)
 
-        // setFooditem(tempItem)
+        tempItem = {...foodItem, price: itemNewPrice.toFixed(2) }
+
+        // console.log(tempItem)
+        setFooditem(tempItem)
+
+    }
+
+    function minusQtyAndSettingPrice () {
+
+        if (qty > 1) {
+            setQty(qty - 1)
+            itemOriginalPrice = parseFloat(foodItemPrice?.price)
+            itemNewPrice = parseFloat(foodItem?.price)
+            itemNewPrice -= itemOriginalPrice
+
+            console.log(itemNewPrice)
+
+            tempItem = {...foodItem, price: itemNewPrice.toFixed(2) }
+
+            // console.log(tempItem)
+            setFooditem(tempItem)
+        }
+
     }
 
     const [price, setPrice] = React.useState()
@@ -371,12 +399,13 @@ const FoodDetail = ({route, navigation}) => {
                 <StepperInput
                     value={qty}
                     // onAdd={() => setQty(qty + 1)}
-                    onAdd = {() => addQty()}
-                    onMinus={() => {
-                        if (qty > 1) {
-                            setQty(qty - 1)
-                        }
-                    }}
+                    onAdd = {() => addQtyAndSettingPrice()}
+                    onMinus = {() => minusQtyAndSettingPrice()}
+                    // onMinus={() => {
+                    //     if (qty > 1) {
+                    //         setQty(qty - 1)
+                    //     }
+                    // }}
                 />
 
                 {/* Text Button Showing price */}
