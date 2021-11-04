@@ -33,6 +33,7 @@ export const clock = require("../assets/icons/Clock.png");
 export const locationMap = require("../assets/icons/locationMap.png");
 export const plus = require("../assets/icons/plus.png");
 export const minus = require("../assets/icons/minus.png");
+export const deleteIcon = require("../assets/icons/delete.png");
 
 export default {
     back,
@@ -67,5 +68,6 @@ export default {
     clock,
     locationMap,
     plus,
-    minus
+    minus,
+    deleteIcon
 }

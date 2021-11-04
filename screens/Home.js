@@ -105,7 +105,7 @@ const Home = ({navigation}) => {
 
     const [categories, setCategories] = React.useState(categoryData)
     const [foodCards, setFoodCards] = React.useState(foodCardData)
-    const [selectedCategory, setSelectedCategory] = React.useState(null)
+    const [selectedCategory, setSelectedCategory] = React.useState(categories.findIndex(item => item.id === 1))
     const [restaurants, setRestaurants] = React.useState(restaurantData)
     // const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 
@@ -253,7 +253,7 @@ const Home = ({navigation}) => {
                         // marginTop: -50,
                     }}
                     //REMEMBER: pass the items and other dummy data as well
-                    onPress={() => navigation.navigate("FoodDetail", {item})}
+                    onPress={() => {navigation.navigate('FoodDetail')}}
                 >
                     {/* image */}
                     <Image

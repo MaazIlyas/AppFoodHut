@@ -57,10 +57,22 @@ const Cart = ({navigation}) => {
 
     const [cartData, setCartData] = React.useState(cartList)
 
+    //Handling the Update of quantity in stepper
     function updateQuantityHandler(newQty, id) {
         const newCartList = cartData.map(cl =>(
             cl.id === id ? {...cl, qty: newQty} : cl
         ))
+
+        setCartData(newCartList)
+    }
+
+    //Handing the delete
+    function removeCartHandler (id) {
+        let newCartList = [...cartData]
+
+        const index = newCartList.findIndex(cart => cart.id === id)
+
+        newCartList.splice(index, 1)
 
         setCartData(newCartList)
     }
@@ -181,6 +193,23 @@ const Cart = ({navigation}) => {
                         />
 
                     </View>
+                )}
+                renderHiddenItem={(data, rowMap) =>(
+                    <IconButton
+                        containerStyle={{
+                            flex: 1,
+                            justifyContent: 'flex-end',
+                            backgroundColor: COLORS.primary,
+                            ...styles.cartItemContainer
+                        }}
+                        icon={icons.deleteIcon}
+                        iconStyle={{
+                            marginRight: 5,
+                            tintColor: 'white',
+                            height: '40%'
+                        }}
+                        onPress={() => removeCartHandler(data.item.id)}
+                    />
                 )}
             />
         )
