@@ -36,7 +36,7 @@ const food = [
 const FoodDetail = ({route, navigation}) => {
 
     const [foodItem, setFooditem] = React.useState(null);
-    const [foodItemPrice, setFooditemPrice] = React.useState(null);
+    const [foodItemDummy, setFoodItemDummy] = React.useState(null); //original dummy data of item
     const [selectedSize, setSelectedSize] = React.useState(1)
     const [qty, setQty] = React.useState(1)
     const [realPrice, setRealPrice] = React.useState(null)
@@ -46,7 +46,7 @@ const FoodDetail = ({route, navigation}) => {
     React.useEffect(() => {
         let {item} = route.params;
         setFooditem(item)
-        setFooditemPrice(item)
+        setFoodItemDummy(item)
         setRealPrice(parseFloat(foodItem?.price))
     }, [])
 
@@ -54,7 +54,7 @@ const FoodDetail = ({route, navigation}) => {
 
     function addQtyAndSettingPrice () {
         setQty(qty + 1)
-        itemOriginalPrice = parseFloat(foodItemPrice?.price)
+        itemOriginalPrice = parseFloat(foodItemDummy?.price)
         itemNewPrice = parseFloat(foodItem?.price)
         itemNewPrice += itemOriginalPrice
 
@@ -71,11 +71,11 @@ const FoodDetail = ({route, navigation}) => {
 
         if (qty > 1) {
             setQty(qty - 1)
-            itemOriginalPrice = parseFloat(foodItemPrice?.price)
+            itemOriginalPrice = parseFloat(foodItemDummy?.price)
             itemNewPrice = parseFloat(foodItem?.price)
             itemNewPrice -= itemOriginalPrice
 
-            console.log(itemNewPrice)
+            // console.log(itemNewPrice)
 
             tempItem = {...foodItem, price: itemNewPrice.toFixed(2) }
 
@@ -84,6 +84,20 @@ const FoodDetail = ({route, navigation}) => {
         }
 
     }
+
+    //Function to add incart quantity numbers
+    function addQuantityInCart () {
+        inCartQuantity = foodItem?.inCart;
+        // console.log(alreadyInCart)
+
+        inCartQuantity += 1
+
+        tempItem = {...foodItem, inCart: inCartQuantity }
+        // console.log(inCartQuantity)
+        setFooditem(tempItem)
+    }
+
+    // onPress={() => {navigation.navigate('Cart')}}
 
     const [price, setPrice] = React.useState()
     function renderHeader() {
@@ -119,7 +133,7 @@ const FoodDetail = ({route, navigation}) => {
                 }
                 rightComponent={
                     <CartQuantityButton
-                    quantity={3}
+                    quantity={foodItem?.inCart == 0 ? 0 : 1}
                     onPress={() => navigation.navigate("Cart")}
                     />
                 }
@@ -421,7 +435,8 @@ const FoodDetail = ({route, navigation}) => {
                     }}
                     label="Add"
                     label2={foodItem?.price}
-                    onPress={() => {navigation.navigate('Cart')}}
+                    // onPress={() => {navigation.navigate('Cart')}}
+                    onPress={() => addQuantityInCart()}
                 />
 
             </View>

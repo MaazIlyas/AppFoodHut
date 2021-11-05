@@ -34,6 +34,8 @@ export const locationMap = require("../assets/icons/locationMap.png");
 export const plus = require("../assets/icons/plus.png");
 export const minus = require("../assets/icons/minus.png");
 export const deleteIcon = require("../assets/icons/delete.png");
+export const reservation = require("../assets/icons/reservation.jpeg");
+
 
 export default {
     back,
@@ -69,5 +71,6 @@ export default {
     locationMap,
     plus,
     minus,
-    deleteIcon
+    deleteIcon,
+    reservation
 }

@@ -151,7 +151,7 @@ const Home = ({navigation}) => {
     ]
 
     // useEffect(()=>{
-    //     console.log("Apple")
+    //     console.log("testing")
     // },[]);
 
     let x = 1;
